@@ -14,7 +14,7 @@ Emojis
 - 😄 Pronouns: ...
 - ⚡ 
 
-'''python
+```python
 options = Options()
 options.headless = True
 driver = webdriver.Chrome(options = options)
@@ -28,7 +28,7 @@ per_cnbc = float(per_cnbc)
 per = per_cnbc
             
 flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
-'''
+```
 
 
 
