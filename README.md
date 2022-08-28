@@ -65,6 +65,8 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
         per = per_cnbc
 
         flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
+      
+      ![image](https://user-images.githubusercontent.com/87015101/187057110-40d69327-a32d-46c9-83a8-24f37f41651b.png)
 
       However, as I mentioned, simplify where possible to avoid introducing new errors. I ended up recalling my commerce course and instead sraped               the market share price and EPS Ratio from Yahoo Finance to calculate the negative PE Ratio (reducing the sources I was scraping from). 
 
