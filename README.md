@@ -50,23 +50,27 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 - 
 
 
-[^bignote]: Here's one with multiple paragraphs and code.
+[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see image below code). I've included the code I used originally however it will provide the incorrect PE ratio, which is why I scrape it from CNBC. 
 
-        options = Options()
-        options.headless = True
-        driver = webdriver.Chrome(options = options)
-        driver.get(f'https://www.cnbc.com/quotes/{actual_ticker}')
+        def transform3(baguette):
+            price = baguette.find('fin-streamer', {'class':"Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text
+            return price
+        
+        def transform4(baguette):
+            eps = baguette.find('td', {'data-test':"EPS_RATIO-value"}).text.strip()
+            return eps
 
-        time.sleep(15)
-
-        per_cnbc = driver.find_element(By.XPATH, '//*[@class="Summary-container"]/div[3]/ul/li[2]/span[2]').text
-        per_cnbc = float(per_cnbc)
-
-        per = per_cnbc
+        c = extract(code) 
+        share_price = float(transform3(c))
+        eps = float(transform4(c))
+        
+        per = share_price/eps
+        
+        print(per)
 
         flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
       
       ![image](https://user-images.githubusercontent.com/87015101/187057110-40d69327-a32d-46c9-83a8-24f37f41651b.png)
 
-      However, as I mentioned, simplify where possible to avoid introducing new errors. I ended up recalling my commerce course and instead sraped               the market share price and EPS Ratio from Yahoo Finance to calculate the negative PE Ratio (reducing the sources I was scraping from). 
+      Always double check sources!
 
