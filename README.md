@@ -41,13 +41,12 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 ### What I would work on if I had more time... 🌱
 
 - Some areas of code can be refined to follow best practices - I look forward to learning this as I gain more experience. If I had more time here I would:
-            - Implement Python classes
-            - Add even more comments
-            - Make code more readable 
-            - Figure out a way to segregate different parts of the functions to improve code reuseability 
-            - Try to create even more robust error handling and implement better edge cases for compatability 
+  - Implement Python classes
+  - Add even more comments
+  - Make code more readable 
+  - Figure out a way to segregate different parts of the functions to improve code reuseability 
+  - Try to create even more robust error handling and implement better edge cases for compatability 
             
-- 
 
 
 [^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see image below code). I've included the code I used originally however it will provide the incorrect PE ratio, which is why I scrape it from CNBC. 
@@ -80,6 +79,6 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
       
       <img width="910" alt="image" src="https://user-images.githubusercontent.com/87015101/187059969-5d6b78ff-17eb-4e8f-98f9-2017b00d2b18.png">
       
-      I chose to scrape the PE ratio from CNBC as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio, there are sometimes minute rounding errors.
+      I chose to scrape the PE ratio from CNBC directly as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio, there are sometimes minute rounding errors.
      
 
