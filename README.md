@@ -52,19 +52,19 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 [^bignote]: Here's one with multiple paragraphs and code.
 
-            options = Options()
-            options.headless = True
-            driver = webdriver.Chrome(options = options)
-            driver.get(f'https://www.cnbc.com/quotes/{actual_ticker}')
+         options = Options()
+         options.headless = True
+         driver = webdriver.Chrome(options = options)
+         driver.get(f'https://www.cnbc.com/quotes/{actual_ticker}')
 
-            time.sleep(15)
+         time.sleep(15)
 
-            per_cnbc = driver.find_element(By.XPATH, '//*[@class="Summary-container"]/div[3]/ul/li[2]/span[2]').text
-            per_cnbc = float(per_cnbc)
+         per_cnbc = driver.find_element(By.XPATH, '//*[@class="Summary-container"]/div[3]/ul/li[2]/span[2]').text
+         per_cnbc = float(per_cnbc)
 
-            per = per_cnbc
+         per = per_cnbc
 
-            flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
+         flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
 
       However, as I mentioned, simplify where possible to avoid introducing new errors. I ended up recalling my commerce course and instead sraped               the market share price and EPS Ratio from Yahoo Finance to calculate the negative PE Ratio (reducing the sources I was scraping from). 
 
