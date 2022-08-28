@@ -10,10 +10,7 @@ This documentation is written in place to:
 
 - Guide anyone who needs to take over this project or reuse the code elsewhere 
 - Help others understand key problems encountered and solutions engineered (to inspire problem solving for any future problems)
-- Detail my reflections on:
-  - Possible improvements for next time
-  - Recommendations for future work 
-  - Notable findings and final remarks
+- Detail my reflections on possible improvements for next time and recommendations for future work 
 
 <br>
 
@@ -23,37 +20,32 @@ This documentation is written in place to:
 
 N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't report negative earnings. So if a PE Ratio was N/A, it was calculated by dividing Market Share Price by Earnings Per Share.[^bignote] 
 
+
+
+
+
+
+- The Excel spreadsheet contains both the original scraped output plus a sheet containing manually cleaned data, i.e., comments were checked and outliers were removed)
+
 <br>
 
 ## 🌱 What I would work on if I had more time... 
 
 <br>
 
-- Some areas of code can be refined even further - I look forward to improving my best practices further as I gain more experience. If I had more time here I would:
+- Some areas of code can be refined - I look forward to improving my best practices further as I gain more experience. If I had more time here, I would:
 
-  - Implement Python classes
-  - Add even more comments
-  - Make code more readable 
+  - Implement Python classes to improve functionality
   - Segregate different parts of the functions to improve code reuseability 
-  - Try to create even more robust error handling (monitor program over several days to gain more insight into further issues which can arise).
-  - Implement better edge cases in error treatment for compatability, simplicity and further error risk management 
+  - Implement better treatment of edge cases in error handling for compatability, simplicity and further error risk management 
+  - Make code more readable 
 
 <br>
 
-- Given more time to work on this project I would also continue future proofing by:
-  - Moving code to cloud so it can run remotely as running the program takes a while
-  - Moving code to Github earlier so commit history is visible 
- 
+- I would future proof this project and upcoming projects by:
 
-<br>
-
-## Final comments
-
-<br>
-
-- The Excel spreadsheet contains both the original scraped output plus a sheet containing manually cleaned data, i.e., checking comments and removing outliers)
-- C
-- C
+  - Moving code to cloud computing so it can run remotely as running the program takes a while
+  - Starting projects from Github so full commit histories are visible 
 
 <br>
 
@@ -63,9 +55,7 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 - Recommendation 1: Change inital data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers 
 - Recommendation 2: Switch data source to CNBC or NASDAQ given reliability issues as seen with Yahoo Finance
-- Recommendation 3: 
-
-
+- Recommendation 3: Create even more robust error handling and monitor program performance over several days to gain more insight into further issues which can arise 
 
 <br>
 

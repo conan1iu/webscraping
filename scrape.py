@@ -32,6 +32,8 @@ print(excel.sheetnames)
 sheet = excel.active
 sheet.title = 'Stocks'
 print(excel.sheetnames)
+
+sheet.append
 sheet.append(['Rank by Weight', 'Code', 'Amended Code', 'Name', 'Market Cap', 'PE Ratio', 'Sector', 'Comments'])
 
 #replace this with your user agent
