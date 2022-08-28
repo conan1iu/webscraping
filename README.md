@@ -68,7 +68,18 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
         
         print(per)
       
-      ![image](https://user-images.githubusercontent.com/87015101/187057110-40d69327-a32d-46c9-83a8-24f37f41651b.png)
+      Yahoo Finance:
+      
+      <img width="468" alt="image" src="https://user-images.githubusercontent.com/87015101/187060046-6812ac11-ce1c-4146-afd9-73c5f1ac47ab.png">
+      
+      CNBC: 
+      
+      <img width="333" alt="image" src="https://user-images.githubusercontent.com/87015101/187059943-58b90d92-d2af-435c-9174-f04f3a3c594c.png">
 
-      Always double check sources!
+      NASDAQ:
+      
+      <img width="910" alt="image" src="https://user-images.githubusercontent.com/87015101/187059969-5d6b78ff-17eb-4e8f-98f9-2017b00d2b18.png">
+      
+      I chose to scrape the PE ratio from CNBC as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio, there are sometimes minute rounding errors.
+     
 
