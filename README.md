@@ -53,7 +53,7 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 <br>
 
-- Recommendation 1: Change inital data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers 
+- Recommendation 1: Change initial data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers 
 - Recommendation 2: Switch data source to CNBC or NASDAQ given reliability issues as seen with Yahoo Finance
 - Recommendation 3: Create even more robust error handling and monitor program performance over several days to gain more insight into further issues which can arise 
 
@@ -61,7 +61,8 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 ## Footnotes
 
-[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see image below code). I've included the code I used originally however it will provide the incorrect PE ratio, which is why I scrape it from CNBC. 
+
+[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see image below code). I've included the code I used originally however it will provide the incorrect PE ratio, which is why if the PE ratio is "N/A" the first time around I scrape it from CNBC as a fix. 
 
         def transform3(baguette):
             price = baguette.find('fin-streamer', {'class':"Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text
