@@ -42,18 +42,29 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 - Given more time to work on this project I would also continue future proofing by:
   - Moving code to cloud so it can run remotely as running the program takes a while
-  - 
+  - Moving code to Github earlier so commit history is visible 
  
 
 <br>
 
-## Final recommendations and comments
+## Final comments
 
 <br>
 
-- Change inital data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers
-- Switch data source to CNBC or NASDAQ given reliability issues as seen with Yahoo Finance
 - The Excel spreadsheet contains both the original scraped output plus a sheet containing manually cleaned data, i.e., checking comments and removing outliers)
+- C
+- C
+
+<br>
+
+## Final recommendations
+
+<br>
+
+- Recommendation 1: Change inital data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers 
+- Recommendation 2: Switch data source to CNBC or NASDAQ given reliability issues as seen with Yahoo Finance
+- Recommendation 3: 
+
 
 
 <br>
