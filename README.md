@@ -1,4 +1,14 @@
-## 🔭 Yahoo Finance Webscraping Project Documentation
+# 🔭 Yahoo Finance Webscraping Project Documentation
+
+- 🤔 Purpose of this documentation
+
+This documentation is written in place to help:
+
+- Guide anyone who needs to take over this project or reuse the code 
+- Understand key problems encountered and solutions used to spark problem solving for future problems which may arise
+- 
+
+
 
 
 
@@ -8,11 +18,39 @@ Emojis
 - 🔭 I’m currently working on ...
 
 - 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
+
 - 💬 Ask me about ...
 - 📫 How to reach me: ...
 - 😄 Pronouns: ...
 - ⚡ 
+
+
+### Key errors encountered, solutions
+
+
+N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't report negative earnings. So if a PE Ratio was N/A, it was calculated by dividing Market Share Price by Earnings Per Share.[^bignote] 
+
+
+
+### Final proposals
+
+- Move data source to CNBC 
+- Change inital data source to a more accurate list of the S&P 500 which updates daily
+
+
+### What I would work on if I had more time... 🌱
+
+- While I tried out Python for basic data visualisation a few years ago, I basically had to learn it from scratch in 2 days to complete this task. Hence, some areas of code can be refined to follow best practices. If I had more time here I would:
+            - Implement Python classes
+            - Add even more comments
+            - Make code more readable 
+            - Figure out a way to segregate different parts of the functions to improve code reuseability 
+            - Try to create even more robust error handling and implement better edge cases 
+            
+- 
+
+
+[^bignote]: Initially, if a PE Ratio was popping up as N/A, I scraped the value from CNBC using this code: 
 
 ```python
 options = Options()
@@ -30,16 +68,4 @@ per = per_cnbc
 flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
 ```
 
-
-
-## Final proposals
-
-- Move data source to CNBC 
-- Change inital data source to a more accurate list of the S&P 500 which updates daily
-
-
-## What I would work on if I had more time... 🌱
-
-- Okay
-  - test
-
+However, as I mentioned, simplify where possible to avoid introducing new errors. I ended up recalling my commerce course and instead scraped the market share price and EPS Ratio from Yahoo Finance to calculate the negative PE Ratio (reducing the sources I was scraping from). 
