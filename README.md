@@ -1,28 +1,13 @@
 # 🔭 Yahoo Finance Webscraping Project Documentation
 
-- 🤔 Purpose of this documentation
+### 🤔 Purpose of this documentation
 
 This documentation is written in place to:
 
-- Guide anyone who needs to take over this project or reuse the code 
-- Help others understand key problems encountered and solutions engineered to inspire problem solving for any future problems
-- 
+- Guide anyone who needs to take over this project or reuse the code elsewhere 
+- Help others understand key problems encountered and solutions engineered (to inspire problem solving for any future problems)
+- Detail any notable findings and recommendations for future work 
 
-
-
-
-
-
-Emojis
-
-- 🔭 I’m currently working on ...
-
-- 👯 I’m looking to collaborate on ...
-
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ 
 
 
 ### Key errors encountered, solutions
@@ -32,13 +17,13 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 
 
-### Final proposals
+## Final proposals
 
-- Move data source to CNBC 
-- Change inital data source to a more accurate list of the S&P 500 which updates daily
+- Move data source to CNBC.  
+- Change inital data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers. 
 
 
-### What I would work on if I had more time... 🌱
+## 🌳 What I would work on if I had more time... 
 
 - Some areas of code can be refined to follow best practices - I look forward to improving my practices further as I gain more experience. If I had more time here I would:
   - Implement Python classes
@@ -47,7 +32,7 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
   - Figure out a way to segregate different parts of the functions to improve code reuseability 
   - Try to create even more robust error handling and implement better edge cases for compatability and simplicity 
             
-
+## Footnotes
 
 [^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see image below code). I've included the code I used originally however it will provide the incorrect PE ratio, which is why I scrape it from CNBC. 
 
