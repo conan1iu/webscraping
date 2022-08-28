@@ -58,7 +58,7 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
         
         def transform4(baguette):
             eps = baguette.find('td', {'data-test':"EPS_RATIO-value"}).text.strip()
-            return eps
+            return eps #this obtains some incorrect value which disagrees with multiple other sources
 
         c = extract(code) 
         share_price = float(transform3(c))
@@ -67,8 +67,6 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
         per = share_price/eps
         
         print(per)
-
-        flag1 = 'PE Ratio obtained from alt. source CNBC (N/A in Yahoo).'
       
       ![image](https://user-images.githubusercontent.com/87015101/187057110-40d69327-a32d-46c9-83a8-24f37f41651b.png)
 
