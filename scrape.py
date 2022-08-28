@@ -1,4 +1,4 @@
-#libraries 
+#bs4 libraries 
 from urllib import response
 from bs4 import BeautifulSoup
 import requests, openpyxl 
@@ -6,15 +6,15 @@ import requests, openpyxl
 #due diligence library
 import urllib.request
 
+#excel library
 from lxml import html
 
+#selenium libraries
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-
-#debugging
 from selenium import webdriver
 import webbrowser
 from selenium.webdriver.common.keys import Keys
@@ -26,6 +26,7 @@ import re as re
 import time
 from selenium.webdriver.chrome.options import Options
 
+#creation of excel spreadsheet
 excel=openpyxl.Workbook()
 print(excel.sheetnames)
 sheet = excel.active
@@ -33,15 +34,16 @@ sheet.title = 'Stocks'
 print(excel.sheetnames)
 sheet.append(['Rank by Weight', 'Code', 'Amended Code', 'Name', 'Market Cap', 'PE Ratio', 'Sector', 'Comments'])
 
+#replace this with your user agent
+my_user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36' 
 
-
+#navigating the S&P 500 list website
 url = 'https://topforeignstocks.com/indices/components-of-the-sp-500-index/'
 source = requests.get(url)
 soup = BeautifulSoup(source.text, 'html.parser') 
-
 stocks = soup.find('tbody', class_='row-hover').find_all('tr')
 
-stocks = stocks[88:89]
+stocks = stocks[88:89] #you can use this to filter a specific stock you know is giving you issues (to test your error handling)
 
 for stock in stocks: 
     
@@ -52,7 +54,7 @@ for stock in stocks:
     
     try:
         def extract(ticker):
-            headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'}
+            headers = {'User-Agent': my_user_agent}
             source = requests.get(f'https://finance.yahoo.com/quote/{ticker}?ltr=1')
             source.raise_for_status()
             url = f'https://finance.yahoo.com/quote/{ticker}?ltr=1'
@@ -211,6 +213,6 @@ for stock in stocks:
         
                 sheet.append([rank, code, actual_ticker, name, mkt_cap, per, sector, flag])    
 
-
+#save the excel spreadsheet
 excel.save('S&P 500 Stock Information.csv')
 

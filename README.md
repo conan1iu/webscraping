@@ -40,12 +40,12 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 ### What I would work on if I had more time... 🌱
 
-- Some areas of code can be refined to follow best practices - I look forward to learning this as I gain more experience. If I had more time here I would:
+- Some areas of code can be refined to follow best practices - I look forward to improving my practices further as I gain more experience. If I had more time here I would:
   - Implement Python classes
   - Add even more comments
   - Make code more readable 
   - Figure out a way to segregate different parts of the functions to improve code reuseability 
-  - Try to create even more robust error handling and implement better edge cases for compatability 
+  - Try to create even more robust error handling and implement better edge cases for compatability and simplicity 
             
 
 
