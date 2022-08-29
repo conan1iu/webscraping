@@ -47,7 +47,6 @@ NB: There are two .csv files in the GitHub repo; one is the original scraped out
 <br>
 
 Some other notable (but smaller) errors:
-
 <br>
 
 - Selenium would sometimes return a `'NoneType' object has no attribute 'text'`, which I resolved by adding a bunch of time.sleep() commands
