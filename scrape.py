@@ -44,18 +44,24 @@ date_updated_list = driver.find_element(By.XPATH, '//*[@id="post-1488"]/div/p[2]
 #creation of excel spreadsheet
 excel=openpyxl.Workbook()
 sheet = excel.active
-sheet.title = 'Stocks'
+sheet.title = 'S&P 500 Stock Information'
 print(excel.sheetnames)
 print(date_updated, date_updated_list)
 sheet.append([date_updated, date_updated_list])
 sheet.append(['Rank by Weight', 'Code', 'Amended Code', 'Name', 'Market Cap', 'PE Ratio', 'Sector', 'Comments'])
 
-#scraping component:
 
-#replace this with your user agent
+
+
+
+###replace this with your user agent###
 my_user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36' 
 
-#navigating the S&P 500 list website
+
+
+
+
+##component A: scraping info from S&P 500 list website##
 url = 'https://topforeignstocks.com/indices/components-of-the-sp-500-index/'
 source = requests.get(url)
 soup = BeautifulSoup(source.text, 'html.parser') 
@@ -70,6 +76,9 @@ for stock in stocks:
     name = stock.find('td', class_ = 'column-2').text
     sector = stock.find('td', class_= 'column-4').text
     
+    ##component B: scraping market cap and PE ratio from Yahoo Finance## 
+
+    ##component C_0: first layer of error treatment (ticker/URL 404 error)##
     try:
         def extract(ticker):
             headers = {'User-Agent': my_user_agent}
@@ -94,6 +103,7 @@ for stock in stocks:
         
         actual_ticker = code 
         
+        ##component D: second layer of error treatment (N/A PE ratio)## 
         if (per == 'N/A'):
             
             options = Options()
@@ -120,7 +130,10 @@ for stock in stocks:
             print(rank, code, actual_ticker, name, mkt_cap, per, sector)
         
             sheet.append([rank, code, actual_ticker, name, mkt_cap, per, sector])   
+    
     except:
+    
+        ##component C_1: first layer of error treatment (ticker/URL 404 error)##
         try:
             options = Options()
             options.headless = True
@@ -140,6 +153,7 @@ for stock in stocks:
             
             flag2 = 'Original URL did not load for ticker. Stock was searched up by name, possibly amended ticker obtained instead.'
             
+            ##component D: second layer of error treatment (N/A PE ratio)## 
             if (per == 'N/A'):
             
                 options = Options()
@@ -171,6 +185,8 @@ for stock in stocks:
                 sheet.append([rank, code, actual_ticker, name, mkt_cap, per, sector, flag2])
            
         except:
+            
+            ##component C_2: first layer of error treatment (ticker/URL 404 error)##
             try:
                 options = Options()
                 options.headless = True
@@ -189,7 +205,8 @@ for stock in stocks:
                 actual_ticker = actual_ticker_text.split()[-1]
             
                 flag2 = 'Original URL did not load for ticker. Stock was searched up by name, possibly amended ticker obtained instead.'
-
+                
+                ##component D: second layer of error treatment (N/A PE ratio)## 
                 if (per == 'N/A'):
             
                     options = Options()
@@ -219,7 +236,8 @@ for stock in stocks:
                     print(rank, code, actual_ticker, name, mkt_cap, per, sector, flag2)
                 
                     sheet.append([rank, code, actual_ticker, name, mkt_cap, per, sector, flag2])
-               
+            
+            ##component E: third layer of error treatment (outlier flagging)##   
             except:
                 flag = f'Investigate the stock with name {name} further within source data.'
                 
@@ -231,6 +249,6 @@ for stock in stocks:
         
                 sheet.append([rank, code, actual_ticker, name, mkt_cap, per, sector, flag])    
 
-#save the excel spreadsheet
+#save the excel spreadsheet :) 
 excel.save('S&P 500 Stock Information.csv')
 

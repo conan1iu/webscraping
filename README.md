@@ -18,6 +18,23 @@ This documentation is written in place to:
 
 <br>
 
+This section doubles up as a walk through of why I made certain decisions in my code as well as an explanation of my error treatments.  
+
+Firstly, I did not encounter any errors when scraping the first website for the S&P 500 list (`component A` in the code).
+
+<br>
+
+1. The first error I encountered was in `component B`, where some tickers would not load into the Yahoo Finance URL, either due to the ticker changing or something going wrong in the back end (404 error). For example, the first website had Berkshire Hathaway Class B's ticker as `BRK.B` when it was actually `BRK-B`. 
+
+    - In this case, I introduced the first layer of error treatment in `component C_1`; if the ticker did not load I instructed the code to search up the first two words of respective company's name in Yahoo Finance's search box, click on the first result (since search results are returned in order of weight) then scrape the data from there, as well as the actual ticker of the stock. 
+    
+    - Sometimes there was a mismatch between the stock name and company name, so I added another step to this layer called `component C_2`; if searching up the first two words of the company name did not work, the code searches up only the first word.
+
+    - If there are cases which still bypass both these components, they enter `component C`
+
+2. 
+
+
 N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't report negative earnings. So if a PE Ratio was N/A, it was calculated by dividing Market Share Price by Earnings Per Share.[^bignote] 
 
 
@@ -26,7 +43,19 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 
 
-NB: The Excel spreadsheet contains both the original scraped output in a sheet called 'Stocks' + a sheet containing manually checked data ready for analysis, i.e., comments/tickers were checked, outliers removed, amended tickers used.
+NB: There are two .csv files in the GitHub repo; one is the original scraped output and the other 'cleaned' version contains manually checked data ready for analysis, i.e., comments/tickers were checked, outliers removed, amended tickers used.
+
+
+Some other notable (but smaller) errors:
+
+<br>
+
+- Selenium would sometimes return a `'NoneType' object has no attribute 'text'`, which I resolved by adding a bunch of time.sleep() commands
+
+- Another error I got was `unknown error: cannot determine loading status`, which I fixed by installing the latest version of Chrome and the Chrome driver (I even got Chrome Beta for this)  
+- At times there are repeated spans or lists with no real differentiating classes or ID's. In this case, I found learning how to write Xpaths handy, e.g., appending `\ul\span[2]` to reach the second span of an unordered list in a `div` that does have a class or ID 
+- The .csv output initially stored numbers as a string, so I used `int()` or `float()` to convert all numbers stored as strings to actual integers or real numbers, respectively. 
+
 
 <br>
 
@@ -51,7 +80,7 @@ NB: The Excel spreadsheet contains both the original scraped output in a sheet c
 
   - Moving code to cloud computing so it can run remotely as running the program takes a while (moving to cloud would help with parallel processing as well)
 
-  - Starting projects from Github so full commit histories are visible 
+  - Starting projects from GitHub so full commit histories are visible (I only moved this project onto GitHub after a substantial period of time)
 
 <br>
 
