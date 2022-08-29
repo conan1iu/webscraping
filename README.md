@@ -52,8 +52,9 @@ Some other notable (but smaller) errors:
 - Selenium would sometimes return a `'NoneType' object has no attribute 'text'`, which I resolved by adding a bunch of time.sleep() commands
 
 - Another error I got was `unknown error: cannot determine loading status`, which I fixed by installing the latest version of Chrome and the Chrome driver (I even got Chrome Beta for this)  
-- At times there are repeated spans or lists with no real differentiating classes or ID's. In this case, I found learning how to write Xpaths handy, e.g., appending `\ul\span[2]` to reach the second span of an unordered list in a `div` that does have a class or ID 
+- At times there are repeated spans or lists with no real differentiating classes or ID's. In this case, I found learning Xpaths handy, e.g., appending `\ul\span[2]` to reach the second span of an unordered list in a `div` that does have a class or ID 
 - The .csv output initially stored numbers as a string, so I used `int()` or `float()` to convert all numbers stored as strings to actual integers or real numbers, respectively. 
+- Both Beautiful Soup and Selenium have their strengths and weaknesses. Notably Beautifulsoup cannot use Xpaths. I found learning both to be helpful in adaptability. 
 
 
 <br>
