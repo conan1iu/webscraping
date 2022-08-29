@@ -24,17 +24,17 @@ Firstly, I did not encounter any errors when scraping the first website for the 
 
 <br>
 
-1. The first error I encountered was in `component B`, where some tickers would not load into the Yahoo Finance URL, either due to the ticker changing or something going wrong in the back end (404 error). For example, the first website had Berkshire Hathaway Class B's ticker as `BRK.B` when it was actually `BRK-B`. 
+1. The first error I encountered was in `component B`, where some tickers would not load into the Yahoo Finance URL, either due to the ticker from the first website not matching what is in Yahoo Finance or something going wrong in the back end (404 error). For example, the first website had Berkshire Hathaway Class B's ticker as `BRK.B` when it was actually `BRK-B` on Yahoo Finance. 
 
-    - In this case, I introduced the first layer of error treatment in `component C_1`; if the ticker did not load I instructed the code to search up the first two words of respective company's name in Yahoo Finance's search box, click on the first result (since search results are returned in order of weight) then scrape the data from there, as well as the actual ticker of the stock. 
+    - In this case, I introduced the first layer of error treatment in `component C_1`; if the ticker did not load I instructed the code to search up the first two words of the respective company's name in Yahoo Finance's search box, click on the first result (since search results are returned in order of weight) then scrape the data from there, as well as the actual ticker of the stock. 
     
     - Sometimes there was a mismatch between the stock name and company name, so I added another step to this layer called `component C_2`; if searching up the first two words of the company name did not work, the code searches up only the first word.
 
-    - If there are cases which still bypass both these components, they enter `component E`. It is likely data entering this error treatment is an outlier, so I simply flag such observations need further investigation. 
+    - If there are cases which still bypass both these error treatments, they enter `component E`. It is likely data entering this error treatment is an outlier, so I simply flag such observations as needing further investigation. 
 
 <br>
 
-2. The next error I encountered was the fact that Yahoo Finance doesn't report negative earnings, instead reporting an `N/A`. This meant the PE ratio for comapnies with negative earnings was unreported in the excel file. 
+2. The next error I encountered was the fact that Yahoo Finance doesn't report negative earnings, instead reporting an `N/A`. This meant the PE ratio for companies with negative earnings were unreported in the excel file. 
 
     - To resolve this issue I added `component D` in the code; if an originally scraped PE ratio was `N/A`, I redirected the scraper to CNBC. I then scraped the PE ratio from CNBC directly[^bignote] 
       
@@ -54,7 +54,7 @@ Some other notable (but smaller) errors:
 - Another error I got was `unknown error: cannot determine loading status`, which I fixed by installing the latest version of Chrome and the Chrome driver (I even got Chrome Beta for this)  
 - At times there are repeated spans or lists with no real differentiating classes or ID's. In this case, I found learning Xpaths handy, e.g., appending `\ul\span[2]` to reach the second span of an unordered list in a `div` that does have a class or ID 
 - The .csv output initially stored numbers as a string, so I used `int()` or `float()` to convert all numbers stored as strings to actual integers or real numbers, respectively. 
-- Both Beautiful Soup and Selenium have their strengths and weaknesses. Notably Beautifulsoup cannot use Xpaths. I found learning both to be helpful in adaptability. 
+- Both Beautiful Soup and Selenium have their strengths and weaknesses. Notably Beautiful Soup cannot use Xpaths. I found learning both to be helpful in adaptability. 
 
 
 <br>
@@ -78,9 +78,11 @@ Some other notable (but smaller) errors:
 
 - I would future proof this project and upcoming projects by:
 
-  - Moving code to cloud computing so it can run remotely as running the program takes a while (moving to cloud would help with parallel processing as well)
+  - Create some sort of macro which asks the user for all necessary information such as user agents, then runs by itself (so any analyst can run this code quickly from their computer)
 
-  - Starting projects from GitHub so full commit histories are visible (I only moved this project onto GitHub after a substantial period of time)
+  - Moving code to cloud computing so it can run remotely as running the program takes a while (moving to cloud would help with parallel processing as well)
+  - Starting projects from GitHub so full commit histories are visible (I only moved this project onto GitHub after a substantial period of time) 
+  - Improve script to generate new Excel output files when it is run again rather than overwriting the previous output file, or store new outputs in a new sheet in the same Excel file, e.g. adding date suffix to file names or something
 
 <br>
 
