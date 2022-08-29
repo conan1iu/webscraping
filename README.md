@@ -69,7 +69,7 @@ NB: The Excel spreadsheet contains both the original scraped output in a sheet c
 ## Footnotes
 
 
-[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see images below). I ultimately decided if the PE ratio was "N/A" the first time around from Yahoo, then the program would scrape the PE ratio from CNBC directly as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio, there are sometimes minute rounding errors.
+[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see images below). I ultimately decided if the PE ratio was "N/A" the first time around from Yahoo, then the program would scrape the PE ratio from CNBC directly as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio using the official numbers, there are sometimes minute rounding errors.
 
       Yahoo Finance: stock data for NASDAQ:PEG as at 26 August. 
       
