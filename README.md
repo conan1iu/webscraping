@@ -25,7 +25,8 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 
 
-- The Excel spreadsheet contains both the original scraped output plus a sheet containing manually cleaned data, i.e., comments were checked and outliers were removed)
+
+NB: The Excel spreadsheet contains both the original scraped output in a sheet called 'Stocks' + a sheet containing manually checked data ready for analysis, i.e., comments/tickers were checked, outliers removed, amended tickers used.
 
 <br>
 
@@ -33,18 +34,23 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 <br>
 
-- Some areas of code can be refined - I look forward to improving my best practices further as I gain more experience. If I had more time here, I would:
+- Some code can be optimised further - I look forward to improving my best practices as I gain more professional experience. If I had more time here, I would:
 
+  - Implement parallel processes to improve efficiency and scalability, i.e., open up 5 browsers at once to scrape 5 stocks at a time rather than one at a time
+
+  - Figure out a way to store all the headless browsers used in the error handling by Selenium, so once the Excel file comes out I can resolve all comments one by one without having to search for all the stocks again   
   - Implement Python classes to improve functionality
-  - Segregate different parts of the functions to improve code reuseability 
-  - Implement better treatment of edge cases in error handling for compatability, simplicity and further error risk management 
+  - Segregate different parts of the big loop to improve code reuseability 
+  - Create initiator functions to reduce repeated lines of code
+  - Implement better treatment of edge cases in error handling for compatability, simplicity and further error risk management (e.g. replace "." with "-" in tickers throwing up an error)
   - Make code more readable 
 
 <br>
 
 - I would future proof this project and upcoming projects by:
 
-  - Moving code to cloud computing so it can run remotely as running the program takes a while
+  - Moving code to cloud computing so it can run remotely as running the program takes a while (moving to cloud would help with parallel processing as well)
+
   - Starting projects from Github so full commit histories are visible 
 
 <br>
@@ -53,8 +59,9 @@ N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't repor
 
 <br>
 
-- Recommendation 1: Change initial data source to a more reliable list of the S&P 500 which updates daily and contains the correct tickers 
-- Recommendation 2: Switch data source to CNBC or NASDAQ given reliability issues as seen with Yahoo Finance
+- Recommendation 1: Change initial data source to a more reliable list of the S&P 500 which contains the correct tickers 
+
+- Recommendation 2: Switch second data source to CNBC/NASDAQ given Yahoo Finance issues[^bignote]  
 - Recommendation 3: Create even more robust error handling and monitor program performance over several days to gain more insight into further issues which can arise 
 
 <br>

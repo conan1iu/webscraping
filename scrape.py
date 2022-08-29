@@ -26,15 +26,31 @@ import re as re
 import time
 from selenium.webdriver.chrome.options import Options
 
+#obtaining latest date on stock price as PE ratio changes with date 
+options = Options()
+options.headless = True
+driver = webdriver.Chrome(options = options)
+date_url = 'https://au.finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch'
+driver.get(date_url)            
+time.sleep(3)            
+date_updated = driver.find_element(By.XPATH, '//*[@id="quote-market-notice"]/span').text
+
+#obtaining latest updates on 500 list
+date_list = 'https://topforeignstocks.com/indices/components-of-the-sp-500-index/'
+driver.get(date_list)
+time.sleep(3)            
+date_updated_list = driver.find_element(By.XPATH, '//*[@id="post-1488"]/div/p[2]/b').text
+
 #creation of excel spreadsheet
 excel=openpyxl.Workbook()
-print(excel.sheetnames)
 sheet = excel.active
 sheet.title = 'Stocks'
 print(excel.sheetnames)
-
-sheet.append
+print(date_updated, date_updated_list)
+sheet.append([date_updated, date_updated_list])
 sheet.append(['Rank by Weight', 'Code', 'Amended Code', 'Name', 'Market Cap', 'PE Ratio', 'Sector', 'Comments'])
+
+#scraping component:
 
 #replace this with your user agent
 my_user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36' 
@@ -45,7 +61,7 @@ source = requests.get(url)
 soup = BeautifulSoup(source.text, 'html.parser') 
 stocks = soup.find('tbody', class_='row-hover').find_all('tr')
 
-stocks = stocks[88:89] #you can use this to filter a specific stock you know is giving you issues (to test your error handling)
+#stocks = stocks[88:89] #you can use this to filter a specific stock you know is giving you issues (to test your error handling)
 
 for stock in stocks: 
     
