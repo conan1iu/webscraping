@@ -30,21 +30,21 @@ Firstly, I did not encounter any errors when scraping the first website for the 
     
     - Sometimes there was a mismatch between the stock name and company name, so I added another step to this layer called `component C_2`; if searching up the first two words of the company name did not work, the code searches up only the first word.
 
-    - If there are cases which still bypass both these components, they enter `component C`
+    - If there are cases which still bypass both these components, they enter `component E`. It is likely data entering this error treatment is an outlier, so I simply flag such observations need further investigation. 
 
-2. 
+<br>
 
+2. The next error I encountered was the fact that Yahoo Finance doesn't report negative earnings, instead reporting an `N/A`. This meant the PE ratio for comapnies with negative earnings was unreported in the excel file. 
 
-N/A's were popping up in Excel for the PE Ratios, as Yahoo Finance doesn't report negative earnings. So if a PE Ratio was N/A, it was calculated by dividing Market Share Price by Earnings Per Share.[^bignote] 
+    - To resolve this issue I added `component D` in the code; if an originally scraped PE ratio was `N/A`, I redirected the scraper to CNBC. I then scraped the PE ratio from CNBC directly[^bignote] 
+      
+<br>
 
-
-
-
-
-
+For these error treatments, if the error did occur and my solution was implemented, I added a comment to the spreadsheet. This way I can easily manually check off potentially incorrect observations.
 
 NB: There are two .csv files in the GitHub repo; one is the original scraped output and the other 'cleaned' version contains manually checked data ready for analysis, i.e., comments/tickers were checked, outliers removed, amended tickers used.
 
+<br>
 
 Some other notable (but smaller) errors:
 
