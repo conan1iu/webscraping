@@ -93,7 +93,7 @@ Some other notable (but smaller) errors:
 1. Change initial data source to a more reliable list of the S&P 500 which contains the correct tickers 
 
 2. Switch second data source to CNBC/NASDAQ given Yahoo Finance issues[^bignote]  
-3. Create even more robust error handling and monitor program performance over several days to gain more insight into further issues which can arise 
+3. Create even more robust error treatments, and monitor program performance over several days to gain more insight into further issues which may arise 
 
 <br>
 
