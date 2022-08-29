@@ -69,7 +69,21 @@ NB: The Excel spreadsheet contains both the original scraped output in a sheet c
 ## Footnotes
 
 
-[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see image below code). I've included the code I used originally however it will provide the incorrect PE ratio, which is why if the PE ratio is "N/A" the first time around I scrape it from CNBC as a fix. 
+[^bignote]: Initially, I calculated the PE ratio by scraping the market share price and earnings per share for the companies (then calculating their ratio to find the PE ratio) with negative earnings. However, Yahoo Finance actually reports a different EPS to CNBC, NASDAQ, WSJ, etc. for some reason (see images below). I ultimately decided if the PE ratio was "N/A" the first time around from Yahoo, then the program would scrape the PE ratio from CNBC directly as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio, there are sometimes minute rounding errors.
+
+      Yahoo Finance: stock data for NASDAQ:PEG as at 26 August. 
+      
+      <img width="468" alt="image" src="https://user-images.githubusercontent.com/87015101/187060046-6812ac11-ce1c-4146-afd9-73c5f1ac47ab.png">
+      
+      CNBC: different EPS to Yahoo.
+      
+      <img width="333" alt="image" src="https://user-images.githubusercontent.com/87015101/187059943-58b90d92-d2af-435c-9174-f04f3a3c594c.png">
+
+      NASDAQ: same EPS as CNBC.
+      
+      <img width="910" alt="image" src="https://user-images.githubusercontent.com/87015101/187059969-5d6b78ff-17eb-4e8f-98f9-2017b00d2b18.png">
+
+      I've included the code I originally used to complete this calculation, but it yields a PE ratio which obviously differs to all other sources:
 
         def transform3(baguette):
             price = baguette.find('fin-streamer', {'class':"Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text
@@ -86,19 +100,5 @@ NB: The Excel spreadsheet contains both the original scraped output in a sheet c
         per = share_price/eps
         
         print(per)
-      
-      Yahoo Finance:
-      
-      <img width="468" alt="image" src="https://user-images.githubusercontent.com/87015101/187060046-6812ac11-ce1c-4146-afd9-73c5f1ac47ab.png">
-      
-      CNBC: 
-      
-      <img width="333" alt="image" src="https://user-images.githubusercontent.com/87015101/187059943-58b90d92-d2af-435c-9174-f04f3a3c594c.png">
-
-      NASDAQ:
-      
-      <img width="910" alt="image" src="https://user-images.githubusercontent.com/87015101/187059969-5d6b78ff-17eb-4e8f-98f9-2017b00d2b18.png">
-      
-      I chose to scrape the PE ratio from CNBC directly as i) NASDAQ did not have the value and ii) even when using the formula to calculate the PE ratio, there are sometimes minute rounding errors.
      
 
